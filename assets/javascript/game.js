@@ -1,52 +1,50 @@
-// const guessCounter = document.body.querySelector('.guessCounter');
-// let guess = parseInt(guessCounter.innerHTML);
-// console.log(guessCounter, guess);
-// function subtractOne(number){
-//      number--
-//     guessCounter.innerHTML = number;
-//     return number;
-// }
-// guessCounter.onclick = function() {
-//     guess = subtractOne(guess);
-//     console.log(guess);
-// }
+// Define alphabet letters that computer can pick from
+var alphabetLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k",
+ "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
+var wins = 0;
+var losses = 0;
+var guessesLeft = 9;
+var guessesSoFar = [];
+var userGuess = null;
 
 
-let winCount = 0;
-let loseCount = 0;
-let guessCounter = 10;
-const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-let qwertyStr = 'qwertyuiopasdfghjklzxcvbnm';
-let qwertyArr = qwertyStr.split("");
-console.log(qwertyArr);
-let guessedLetters = [];
+var letterToBeGuessed = alphabetLetters[Math.floor(Math.random() * alphabetLetters.length)];
+console.log("Wins: " + wins + " Losses: " + losses + " GuessesLeft: " + guessesLeft + " Guesses so far: " + guessesSoFar + " Computer picked: " + letterToBeGuessed);
 
-function createButtons(qwertyArr){
-    for (let i = 0; i < qwertyArr.length; i++){
-        let keyBtn = $('<button>');
-        let qwerty = qwertyArr[i];
-        qwerty = qwerty.toUpperCase();
-        console.log(qwerty);
-        keyBtn.addClass('keyBtn keyBtn' + qwerty);
-        keyBtn.text(qwerty);
-        $('.keyboard').append(keyBtn);
-        // give button a class, 
-        // text content of array at the index CaretPosition, 
-        // append buttons to keybaoryod div
-    }
+
+document.onkeyup = function(event) {
+
+	
+	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+
+	
+	if (guessesSoFar.indexOf(userGuess) < 0 && alphabetLetters.indexOf(userGuess) >= 0) {
+		guessesSoFar[guessesSoFar.length]=userGuess;
+		
+		guessesLeft--;
+	}
+
+
+	if (letterToBeGuessed == userGuess) {
+		wins++;
+		guessesLeft = 9;
+		guessesSoFar = [];
+		letterToBeGuessed = alphabetLetters[Math.floor(Math.random() * alphabetLetters.length)];
+	}
+
+	if (guessesLeft == 0) {
+		losses++;
+		guessesLeft = 9;
+		guessesSoFar = [];
+		letterToBeGuessed = alphabetLetters[Math.floor(Math.random() * alphabetLetters.length)];
+	}
+
+	
+	var html = "<p><h1>The Psychic Game</h1></p>" + "<p><h3>Guess what letter I\'m thinking of</h3></p>" + "<p><h3>Wins: "
+	 + wins + "</h3></p>" + "<p><h3>Losses: " + losses + "</h3></p>" + "<p><h3>Guesses Left: " + guessesLeft + "</h3></p>"
+	  + "<p><h3>Your guesses so far: " + guessesSoFar + "</h3></p>";
+	
+	document.querySelector("#game").innerHTML = html;
+
 }
-
-// function logArr(qwertyArr) {
-//     console.log(qwertyArr);
-
-// }
-
-// qwertyArr.keypress(function (e) { 
-//     logArr(qwertyArr);
-// });
-
-createButtons(qwertyArr);
-
-
-
-

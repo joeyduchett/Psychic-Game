@@ -2,40 +2,46 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script
-  src="https://code.jquery.com/jquery-3.4.1.js"
-  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-  crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/reset.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="UTF-8">
+  <title>The Psychic Game</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script type="text/javascript" src="assets/javascript/game.js"></script>
+  <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 
 <body>
-    <div class="game-container">
-        <div class="game">
-            <h1 class="instructions">
-                Guess the letter I am thinking of, you have <span class="guessCounter">10</span> guesses.
-            </h1>
-            <div class="playerScore">
-                <div class="winCount"> Win Count:
-                    <h2>0</h2>
-                </div>
-                <button type="reset" class= "reset">Reset Score</button>
-                <div class="lossCount"> Loss Count:
-                    <h2>0</h2>
-                </div>
-            </div>
-            <div id = "keyboard" class="keyboard">
+	
+	<!-- Display on the screen -->
+		<div class="jumbotron">
+					<div class = "row">
+							<div class = "col-md-1"></div>
+							<div class = "col-md-6">
+									<h1>Psychic Game!</h1>
+							</div>
+							<div class="col-md-5"></div>
+					</div>
 
-            </div>
-        </div>
-    </div>
-    <script src="assets/javascript/game.js"></script>
-</body>
+					<div class = "row">
+							<div class = "col-md-1"></div>
+							<div class = "col-md-6" id = "game">
+									<p><h2>Guess What letter I'm Thinking Of: </h2></p>
+									<p><h3>Wins: 0</h3></p>
+									<p><h3>Losses: 0</h3></p>
+									<p><h3>Guesses Left: 9</h3></p>
+									<p><h3>Your Guesses so far: </h3></p>
+
+							</div>
+							<div class = "col-md-5"></div>
+
+					</div>
+
+			</div>
+
+	</body>
 
 </html>
+
+
+
+  						
